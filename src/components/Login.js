@@ -7,14 +7,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
+import { NETFLIX_BACKGROUND_IMG, TS_USER_ICON } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const email = useRef(null);
   const password = useRef(null);
@@ -42,12 +43,11 @@ const Login = () => {
       )
         .then((userCredentials) => {
           const user = userCredentials.user;
-          console.log(user);
+          // console.log(user);
 
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://charts-static.billboard.com/img/2006/07/taylor-swift-vug-344x344.jpg",
+            photoURL:  TS_USER_ICON ,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -59,7 +59,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -78,10 +77,9 @@ const Login = () => {
       )
         .then((userCredentials) => {
           const user = userCredentials.user;
-          console.log(user);
+          // console.log(user);
           updateProfile(user, {
-            photoURL:
-              "https://charts-static.billboard.com/img/2006/07/taylor-swift-vug-344x344.jpg",
+            photoURL:  TS_USER_ICON ,
           })
             .then(() => {
               const { uid, email, photoURL } = auth.currentUser;
@@ -92,7 +90,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -173,10 +170,7 @@ const Login = () => {
           )}
         </p>
       </form>
-      <img
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/25f808aa-cecb-4753-8541-9a79f40c18ae/web/IN-en-20251006-TRIFECTA-perspective_507f47be-8780-4697-92cb-0f6c78177b6e_large.jpg"
-        alt="netflix-background"
-      />
+      <img src={NETFLIX_BACKGROUND_IMG} alt="netflix-background" />
     </div>
   );
 };

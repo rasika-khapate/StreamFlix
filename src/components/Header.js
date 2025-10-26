@@ -1,25 +1,77 @@
+import React, { useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { addUser, removeUser } from "../redux/userSlice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NETFLIX_LOGO } from "../utils/constants";
+
 const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const user = useSelector((store) => store.user);
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        navigate("/error");
+      });
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User Signed up and signed in
+
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+
+    // This return will be called when component unmounts
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
-      <div className="w-screen flex justify-around items-center absolute bg-gradient-to-t from-black">
+      <div className="fixed w-screen z-50 flex justify-between items-center bg-gradient-to-b from-black">
         <div>
-          <img
-            src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-            alt="netflix-logo"
-            className="w-48"
-          />
+          <img src={NETFLIX_LOGO} alt="netflix-logo" className="w-48" />
         </div>
-        <div className="">
-          <select className="px-4 py-1 rounded-lg border-2 border-white bg-transparent text-white ">
-            <option className="text-black">English</option>
-            <option className="text-black">हिन्दी</option>
-          </select>
-          {/* <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-            alt="netflix-user-icon"
-            className="w-12 rounded-lg"
-          /> */}
-        </div>
+
+        {user && (
+          <div className="flex items-center gap-4">
+            <img
+              src={user?.photoURL}
+              alt="ts-icon"
+              className="w-16 rounded-lg"
+            />
+
+            <button
+              onClick={handleSignOut}
+              className="bg-red-600 text-white px-3 py-1 mr-8 rounded-lg shadow-md"
+            >
+              Sign Out
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
