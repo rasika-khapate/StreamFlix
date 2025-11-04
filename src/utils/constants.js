@@ -7,7 +7,10 @@ export const NETFLIX_BACKGROUND_IMG =
 export const TS_USER_ICON =
   "https://charts-static.billboard.com/img/2006/07/taylor-swift-vug-344x344.jpg";
 
-export const MOVIES_API = "https://api.themoviedb.org/3/movie/popular";
+export const MOVIES_API_NOW_PLAYING =
+  "https://api.themoviedb.org/3/movie/now_playing";
+
+export const MOVIES_API_POPULAR = "https://api.themoviedb.org/3/movie/popular";
 
 export const API_OPTIONS = {
   method: "GET",
@@ -17,3 +20,5 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NmQ0MGE2NmFjNGI1ZjIxYjEwMTAzMWM5MmJkYzE0MyIsIm5iZiI6MTc2MDk1MzY5NS4yNDg5OTk4LCJzdWIiOiI2OGY2MDU1ZjhkM2IzYzA1MDUzYTM0ZDkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.GiuhUO3IGb7xF4fhmCqUx6hzlglAAxIqtheXo5Kjw-g",
   },
 };
+
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";

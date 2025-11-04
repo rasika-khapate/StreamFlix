@@ -27,7 +27,15 @@
 - update the movieslice with trailer video
 - embedded the youtube video and make it autoplay and mute
 - added tailwind classes to make main container look awesome
-
+- Build secondary component
+- Build movielist and moviecard
+- Found out tmbd img cdn url
+- made the UI appealing
+- Building GPT search feature
+- GPT Search Bar 
+- ** Built Multilingual Search and placeholder texts ** 
+- Integrate GPT APIs (get openAI key)
+- 
 
 # Features
 

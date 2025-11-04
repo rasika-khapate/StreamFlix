@@ -5,12 +5,16 @@ import { addUser, removeUser } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { NETFLIX_LOGO } from "../utils/constants";
+import { GPTSearchToggle } from "../redux/GPTSearchSlice";
+import { supported_languages } from "../utils/languageConstants";
+import { changeLanguage } from "../redux/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+  const showGPTSearch = useSelector((store) => store.GPT.showGPTSearch);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -49,15 +53,41 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleGPTSearchToggle = () => {
+    dispatch(GPTSearchToggle());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
     <>
-      <div className="fixed w-screen z-50 flex justify-between items-center bg-gradient-to-b from-black">
+      <div className="fixed w-full z-50 flex justify-between items-center bg-gradient-to-b from-black">
         <div>
           <img src={NETFLIX_LOGO} alt="netflix-logo" className="w-48" />
         </div>
 
         {user && (
           <div className="flex items-center gap-4">
+            {showGPTSearch && (
+              <select
+                className="px-3 py-1 bg-gray-900 text-white"
+                onChange={handleLanguageChange}
+              >
+                {supported_languages.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+            )}
+            <button
+              className="bg-purple-800 text-white px-3 py-1.5 rounded-lg shadow-md"
+              onClick={handleGPTSearchToggle}
+            >
+              {showGPTSearch ? "Go To Homepage" : "GPT Search"}
+            </button>
             <img
               src={user?.photoURL}
               alt="ts-icon"
