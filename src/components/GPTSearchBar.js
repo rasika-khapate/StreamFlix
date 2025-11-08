@@ -1,15 +1,67 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import lang from "../utils/languageConstants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import openai from "../utils/config";
+import { API_OPTIONS } from "../utils/constants";
+import { addGPTMovies, clearGPTMovies } from "../redux/GPTSearchSlice";
 
 const GPTSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
-  const isLoading = false;
+  const [isLoading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const searchText = useRef();
 
-  const handleGPTSearchClick = () => {
-    return true;
+  const handleGPTSearchClick = async () => {
+    setLoading(true);
+
+    dispatch(clearGPTMovies());
+    console.log(searchText.current.value);
+
+    const GPTQuery = `Give me comma separated only 6 movies with only their titles of the following query`;
+
+    const GPTResults = await openai.chat.completions.create({
+      model: "deepseek/deepseek-chat-v3.1:free",
+      // model: "openai/gpt-oss-20b:free",
+
+      messages: [
+        {
+          role: "user",
+          content: `${GPTQuery} - ${searchText.current.value}`,
+        },
+      ],
+    });
+    console.log(
+      GPTResults?.choices[0]?.message?.content?.split(",")?.slice(0, -1)
+    );
+
+    const GPTMovieName = GPTResults?.choices[0]?.message?.content
+      ?.split(",")
+      ?.slice(0, -1);
+
+    const SearchGPTMovies = async (eachMovie) => {
+      const data = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${eachMovie}&include_adult=false&language=en-US&page=1`,
+        API_OPTIONS
+      );
+      const json = await data.json();
+
+      return json.results;
+    };
+
+    const promiseArray = GPTMovieName.map((eachMovie) =>
+      SearchGPTMovies(eachMovie)
+    );
+
+    const TMDBResults = await Promise.all(promiseArray);
+
+    console.log(TMDBResults);
+
+    dispatch(
+      addGPTMovies({ GPTMovieName: GPTMovieName, GPTMovies: TMDBResults })
+    );
+
+    setLoading(false);
   };
 
   return (
