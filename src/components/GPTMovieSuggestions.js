@@ -1,9 +1,25 @@
-import React from 'react'
+import React from "react";
+import MovieList from "./MovieList";
 
 const GPTMovieSuggestions = () => {
-  return (
-    <div>GPTMovieSuggestions</div>
-  )
-}
+  const GPTMovieName = [];
+  const GPTMovies = [];
 
-export default GPTMovieSuggestions
+  return (
+    <>
+      {GPTMovieName && (
+        <div className=" bg-black bg-opacity-90 p-3 mt-9 text-white">
+          {GPTMovieName?.map((movie, index) => (
+            <MovieList
+              key={GPTMovieName}
+              title={movie}
+              movies={GPTMovies?.[index] ?? []}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
+
+export default GPTMovieSuggestions;

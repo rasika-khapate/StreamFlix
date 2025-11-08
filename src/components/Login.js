@@ -47,7 +47,7 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:  TS_USER_ICON ,
+            photoURL: TS_USER_ICON,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -79,7 +79,7 @@ const Login = () => {
           const user = userCredentials.user;
           // console.log(user);
           updateProfile(user, {
-            photoURL:  TS_USER_ICON ,
+            photoURL: TS_USER_ICON,
           })
             .then(() => {
               const { uid, email, photoURL } = auth.currentUser;
@@ -108,9 +108,9 @@ const Login = () => {
       <Header />
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-4/12 mx-auto right-0 left-0 px-7 py-5 my-32 bg-black absolute text-white rounded-lg bg-opacity-70"
+        className="md:w-4/12 w-9/12 mx-auto right-0 left-0 md:px-7 md:py-5 md:my-32 px-5 py-2  my-16 bg-black absolute text-white rounded-lg bg-opacity-70"
       >
-        <h1 className="font-bold text-3xl my-4">
+        <h1 className="font-bold md:text-3xl text-2xl md:my-4 my-1.5">
           {isSignInForm ? "Sign in" : "Sign Up"}
         </h1>
 
@@ -119,7 +119,7 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Enter your name here"
-            className="w-full p-4 my-3 rounded-lg bg-gray-800 bg-opacity-80"
+            className="w-full md:p-4 p-2.5 my-3  rounded-lg bg-gray-800 bg-opacity-80"
           />
         )}
 
@@ -127,19 +127,19 @@ const Login = () => {
           ref={email}
           type="email"
           placeholder="Email Address"
-          className="w-full p-4 my-3 rounded-lg bg-gray-800 bg-opacity-80"
+          className="w-full md:p-4 p-2.5 my-3  rounded-lg bg-gray-800 bg-opacity-80"
         />
         <input
           ref={password}
           type="password"
           placeholder={isSignInForm ? "Password" : "Set up your password"}
-          className="w-full p-4 my-3 rounded-lg bg-gray-800 bg-opacity-80"
+          className="w-full md:p-4 p-2.5 my-3 rounded-lg bg-gray-800 bg-opacity-80"
         />
         <p className="text-red-600 font-bold text-lg text-center">
           {errorMessage}
         </p>
         <button
-          className="w-full p-3 my-3 bg-red-600 rounded-lg"
+          className="w-full md:p-3 p-1.5 my-3 bg-red-600 rounded-lg"
           onClick={handleSignButtonClick}
         >
           {isSignInForm ? "Sign in" : "Sign Up"}
@@ -148,7 +148,7 @@ const Login = () => {
         {isSignInForm && (
           <>
             <h1 className="text-xl text-center">OR</h1>
-            <button className="w-full p-3 my-3 bg-gray-600 bg-opacity-80 rounded-lg">
+            <button className="w-full md:p-3 p-1.5 my-3 bg-gray-600 bg-opacity-80 rounded-lg">
               Use a sign-in code
             </button>
             <h2 className="text-lg text-center underline my-2">
@@ -170,7 +170,11 @@ const Login = () => {
           )}
         </p>
       </form>
-      <img src={NETFLIX_BACKGROUND_IMG} alt="netflix-background" />
+      <img
+        src={NETFLIX_BACKGROUND_IMG}
+        alt="netflix-background"
+        className="h-screen object-cover md:h-full"
+      />
     </div>
   );
 };

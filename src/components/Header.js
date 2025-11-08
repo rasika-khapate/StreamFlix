@@ -63,13 +63,13 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed w-full z-50 flex justify-between items-center bg-gradient-to-b from-black">
+      <div className="fixed w-full z-50 flex flex-col justify-between md:flex-row items-center bg-gradient-to-b from-black">
         <div>
-          <img src={NETFLIX_LOGO} alt="netflix-logo" className="w-48" />
+          <img src={NETFLIX_LOGO} alt="netflix-logo" className="md:w-48 w-32" />
         </div>
 
         {user && (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 mx-2">
             {showGPTSearch && (
               <select
                 className="px-3 py-1 bg-gray-900 text-white"
@@ -83,7 +83,7 @@ const Header = () => {
               </select>
             )}
             <button
-              className="bg-purple-800 text-white px-3 py-1.5 rounded-lg shadow-md"
+              className="bg-purple-800 text-white md:px-3 md:py-1.5 px-1.5 py-1  rounded-lg shadow-md"
               onClick={handleGPTSearchToggle}
             >
               {showGPTSearch ? "Go To Homepage" : "GPT Search"}
@@ -91,12 +91,12 @@ const Header = () => {
             <img
               src={user?.photoURL}
               alt="ts-icon"
-              className="w-16 rounded-lg"
+              className="md:w-16 w-12 rounded-lg"
             />
 
             <button
               onClick={handleSignOut}
-              className="bg-red-600 text-white px-3 py-1 mr-8 rounded-lg shadow-md"
+              className="bg-red-600 text-white md:px-3 md:py-1  px-1.5 py-1 rounded-lg shadow-md"
             >
               Sign Out
             </button>

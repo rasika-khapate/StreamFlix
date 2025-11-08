@@ -19,7 +19,7 @@
 - Unsubcribed to the onAuthStateChanged callback - good practice
 - Add hardcoded values to constants file under utils
 - Register for TMDB API and create app and get access token
-- Go to documentation and get the now palying movie api 
+- Go to documentation and get the now palying movie api
 - Created custom hook for nowplaying movies,
 - created movie slice and updated store with movies data
 - Planning for main container and secondary container
@@ -32,10 +32,15 @@
 - Found out tmbd img cdn url
 - made the UI appealing
 - Building GPT search feature
-- GPT Search Bar 
-- ** Built Multilingual Search and placeholder texts ** 
-- Integrate GPT APIs (get openAI key)
-- 
+- GPT Search Bar
+- ** Built Multilingual Search and placeholder texts **
+- Integrated GPT APIs (get openAI key)
+- GPT Search API call
+- Fetched GPT movie suggestions from TMDB and updated the store
+- Use MovieList component to show GPT search results
+- Memoization
+- adding .env file and securing our secret keys
+- Made our app Responsive
 
 # Features
 
