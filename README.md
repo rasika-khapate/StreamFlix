@@ -1,4 +1,4 @@
-# Building NetflixGPT
+# Building streamFlixGPT
 
 - Creat React App
 - Configured tailwindcss
@@ -58,6 +58,6 @@
     - Movie Suggestion
       - Movies List \* N
 
-- NetflixGPT
+- streamFlixGPT
   - Search Bar
   - Movie suggestions

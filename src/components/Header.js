@@ -4,7 +4,7 @@ import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { NETFLIX_LOGO } from "../utils/constants";
+import { streamFlix_LOGO } from "../utils/constants";
 import { GPTSearchToggle } from "../redux/GPTSearchSlice";
 import { supported_languages } from "../utils/languageConstants";
 import { changeLanguage } from "../redux/configSlice";
@@ -65,7 +65,11 @@ const Header = () => {
     <>
       <div className="fixed w-full z-50 flex flex-col justify-between md:flex-row items-center bg-gradient-to-b from-black">
         <div>
-          <img src={NETFLIX_LOGO} alt="netflix-logo" className="md:w-48 w-32" />
+          <img
+            src={streamFlix_LOGO}
+            alt="streamFlix-logo"
+            className="md:w-48 w-32 ml-5"
+          />
         </div>
 
         {user && (

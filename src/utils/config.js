@@ -6,7 +6,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
   // defaultHeaders: {
   //   "HTTP-Referer": "http://localhost:3000", // Optional. Site URL for rankings on openrouter.ai.
-  //   "X-Title": "NetflixGPT", // Optional. Site title for rankings on openrouter.ai.
+  //   "X-Title": "streamFlixGPT", // Optional. Site title for rankings on openrouter.ai.
   // },
 });
 

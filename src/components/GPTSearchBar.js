@@ -21,8 +21,8 @@ const GPTSearchBar = () => {
     const GPTQuery = `Give me comma separated only 6 movies with only their titles of the following query`;
 
     const GPTResults = await openai.chat.completions.create({
-      model: "deepseek/deepseek-chat-v3.1:free",
-      // model: "openai/gpt-oss-20b:free",
+      // model: "deepseek/deepseek-chat-v3.1:free",
+      model: "openai/gpt-oss-20b:free",
 
       messages: [
         {

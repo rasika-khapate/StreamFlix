@@ -10,7 +10,7 @@ import { auth } from "../utils/firebase";
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
-import { NETFLIX_BACKGROUND_IMG, TS_USER_ICON } from "../utils/constants";
+import { streamFlix_BACKGROUND_IMG, TS_USER_ICON } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
@@ -159,7 +159,7 @@ const Login = () => {
         <p className="mt-4" onClick={handleSignInForm}>
           {isSignInForm ? (
             <>
-              New to Netflix?
+              New to streamFlix?
               <span className="underline cursor-pointer"> Sign Up Now</span>
             </>
           ) : (
@@ -171,8 +171,8 @@ const Login = () => {
         </p>
       </form>
       <img
-        src={NETFLIX_BACKGROUND_IMG}
-        alt="netflix-background"
+        src={streamFlix_BACKGROUND_IMG}
+        alt="streamFlix-background"
         className="h-screen object-cover md:h-full"
       />
     </div>
