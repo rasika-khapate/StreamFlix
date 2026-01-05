@@ -1,7 +1,9 @@
 import RED_BG from "../abstract-red-background-vertical-lines-strips.jpg";
 
+
+
 export const streamFlix_LOGO =
-  "https://hackster.imgix.net/uploads/attachments/195488/steamflix%20logo.png?auto=compress%2Cformat&w=740&h=555&fit=max";
+  "https://modapk.world/wp-content/uploads/2023/12/images-1-739x320.jpeg.webp";
 
 export const streamFlix_BACKGROUND_IMG = RED_BG;
 

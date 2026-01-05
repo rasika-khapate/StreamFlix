@@ -2,7 +2,7 @@ import React from "react";
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
-  // console.log(title, movies);
+ 
 
   return (
     <div className="pl-7">
@@ -10,7 +10,7 @@ const MovieList = ({ title, movies }) => {
         {title}
       </h1>
       <div className="flex overflow-x-auto hide-scrollbar">
-        {/* this hide-scrollbar is not a tailwind class, ive added a class in index.css */}
+        
         <div className="flex gap-x-2">
           {movies?.map((eachMovie) => (
             <MovieCard

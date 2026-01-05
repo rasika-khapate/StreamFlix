@@ -26,16 +26,16 @@ const Login = () => {
   };
 
   const handleSignButtonClick = () => {
-    // validate the form data
+   
 
     const message = checkValidate(email.current.value, password.current.value);
-    // console.log(message);
+    
     setErrorMessage(message);
 
     if (message) return;
 
     if (!isSignInForm) {
-      // If its not a sign in , then SIGN UP the user by using API
+      
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -43,7 +43,7 @@ const Login = () => {
       )
         .then((userCredentials) => {
           const user = userCredentials.user;
-          // console.log(user);
+         
 
           updateProfile(user, {
             displayName: name.current.value,
@@ -77,7 +77,7 @@ const Login = () => {
       )
         .then((userCredentials) => {
           const user = userCredentials.user;
-          // console.log(user);
+         
           updateProfile(user, {
             photoURL: TS_USER_ICON,
           })

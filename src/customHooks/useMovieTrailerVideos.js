@@ -4,7 +4,7 @@ import { addTrailerVideo } from "../redux/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const useMovieTrailerVideos = (id) => {
-  // fetch trailer video and update the store
+ 
 
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
 
@@ -25,7 +25,7 @@ const useMovieTrailerVideos = (id) => {
 
   useEffect(() => {
     !trailerVideo && getMoviesData();
-    // Memoization
+ 
   }, [id]);
 };
 

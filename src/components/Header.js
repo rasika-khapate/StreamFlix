@@ -48,7 +48,6 @@ const Header = () => {
       }
     });
 
-    // This return will be called when component unmounts
 
     return () => unsubscribe();
   }, []);
@@ -68,7 +67,7 @@ const Header = () => {
           <img
             src={streamFlix_LOGO}
             alt="streamFlix-logo"
-            className="md:w-48 w-32 ml-5"
+            className="md:w-48 w-32 h-16 m-5 rounded-2xl"
           />
         </div>
 
