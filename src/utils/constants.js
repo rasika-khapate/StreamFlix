@@ -1,7 +1,6 @@
 import RED_BG from "../abstract-red-background-vertical-lines-strips.jpg";
 
 
-
 export const streamFlix_LOGO =
   "https://modapk.world/wp-content/uploads/2023/12/images-1-739x320.jpeg.webp";
 
